@@ -977,7 +977,7 @@ h6:hover .anchor-link {
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;p&gt;The Pauli X-gate is a simple negation operation. It corresponds to a classical NOT gate.&lt;/p&gt;
 &lt;p&gt;Here is how it works:&lt;/p&gt;
-&lt;p&gt;|0&gt; --&gt; |1&gt; 
+&lt;p&gt;|0&gt; --&gt; |1&gt;&lt;br /&gt;
 |1&gt; --&gt; |0&gt;&lt;/p&gt;
 &lt;/div&gt;
 &lt;/div&gt;
