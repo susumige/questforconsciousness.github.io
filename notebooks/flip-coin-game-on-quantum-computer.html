@@ -3,13 +3,13 @@
 
 <head>
       <!-- Global site tag (gtag.js) - Google Analytics -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id="></script>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-588692-16"></script>
     <script>
       window.dataLayer = window.dataLayer || [];
       function gtag(){dataLayer.push(arguments);}
       gtag('js', new Date());
 
-      gtag('config', '');
+      gtag('config', 'UA-588692-16');
     </script>
     <!-- End of Google Analytics -->
 
@@ -26,14 +26,14 @@
     <meta property="og:site_name" content="Quest for Consciousness" />
     <meta property="og:type" content="article" />
     <meta property="og:title" content="Flip coin game on quantum computer -- Quest for Consciousness" />
-    <meta property="og:url" content="http://127.0.0.1:8000/notebooks/flip-coin-game-on-quantum-computer.html" />
+    <meta property="og:url" content="http://questforconsciousness.org/notebooks/flip-coin-game-on-quantum-computer.html" />
     <meta property="og:description" content="Flip coin game on quantum computer." />
-    <meta property="article:published_time" content="2020-04-03 00:00:00+02:00" />
+    <meta property="article:published_time" content="2019-04-03 00:00:00+02:00" />
     <!-- End of OpenGraph protocol tags -->
 
     <!-- Todo: Setup Twitter SEO meta data -->
 
-    <link rel="canonical" href="http://127.0.0.1:8000/notebooks/flip-coin-game-on-quantum-computer.html"/>
+    <link rel="canonical" href="http://questforconsciousness.org/notebooks/flip-coin-game-on-quantum-computer.html"/>
 
     <!-- Bootstrap core CSS -->
     <link rel="stylesheet" href="/theme/css/bootstrap.min.css" />
@@ -92,9 +92,7 @@
                   <li class="nav-item"><a class="nav-link text-white" href="/qutips.html">Qutips</a></li>
                   <li class="dropdown nav-item">
                     <a href="#" class="dropdown-toggle nav-link text-white" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" id="dropdownMenuButton">More<span class="caret"></span></a>
-                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">                          <a class="dropdown-item" href="/books.html">Books</a>
-                          <div class="dropdown-divider"></div>
-                          <a class="dropdown-item" href="/pages/about.html">About</a>
+                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">                          <a class="dropdown-item" href="/pages/about.html">About</a>
                           <a class="dropdown-item" href="/pages/terms-privacy-policy.html">Terms & Privacy Policy</a>
                     </div>
                   </li>
@@ -109,7 +107,7 @@
   Flip coin game on quantum computer
 </h1>
   <hr>
-  <p><i class="fa fa-calendar"></i> Posted on April 03, 2020</p>
+  <p><i class="fa fa-calendar"></i> Posted on April 03, 2019</p>
   <p><i class="fa fa-tags"></i> Tags:
     <a href="/tag/qiskit.html" class="badge badge-primary">qiskit</a>,
     <a href="/tag/ibm.html" class="badge badge-primary">ibm</a>,
@@ -1093,8 +1091,7 @@ h6:hover .anchor-link {
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>Lets start with quantum programming!</p>
-<p>I will create a simple quantum circuit with two quantum and two classical qubits, and add Hadamard gate whose H representation will be a shortened version of "Hello world" string. :)</p>
+<p>Three approaches with implementing simple flip-coin game using the Hadamard gate.</p>
 </div>
 </div>
 </div>
@@ -1102,172 +1099,7 @@ h6:hover .anchor-link {
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>First step is to import qiskit library.</p>
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In [1]:</div>
-<div class="inner_cell">
-<div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">qiskit</span> <span class="k">import</span> <span class="o">*</span>
-</pre></div>
-</div>
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<p>I will create a two qubit quantum and classical registers.</p>
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In [2]:</div>
-<div class="inner_cell">
-<div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">qr</span> <span class="o">=</span> <span class="n">QuantumRegister</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
-<span class="n">cr</span> <span class="o">=</span> <span class="n">ClassicalRegister</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<p>Now I will create a quantum circuit using those two registers.</p>
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In [3]:</div>
-<div class="inner_cell">
-<div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">circuit</span> <span class="o">=</span> <span class="n">QuantumCircuit</span><span class="p">(</span><span class="n">qr</span><span class="p">,</span> <span class="n">cr</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<p>I will draw it to see how it looks like.</p>
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In [4]:</div>
-<div class="inner_cell">
-<div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="o">%</span><span class="k">matplotlib</span> inline
-</pre></div>
-</div>
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In [5]:</div>
-<div class="inner_cell">
-<div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">circuit</span><span class="o">.</span><span class="n">draw</span><span class="p">()</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="output_wrapper">
-<div class="output">
-<div class="output_area">
-<div class="prompt output_prompt">Out[5]:</div>
-<div class="output_html rendered_html output_subarea output_execute_result">
-<pre style='word-wrap: normal;white-space: pre;background: #fff0;line-height: 1.1;font-family: "Courier New",Courier,monospace'>         
-q0_0: |0>
-         
-q0_1: |0>
-         
- c0_0: 0 
-         
- c0_1: 0 
-         </pre>
-</div>
-</div>
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<p>I will add a Hadamard (H) gate on first quantum qubit.</p>
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In [6]:</div>
-<div class="inner_cell">
-<div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">circuit</span><span class="o">.</span><span class="n">h</span><span class="p">(</span><span class="n">qr</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="output_wrapper">
-<div class="output">
-<div class="output_area">
-<div class="prompt output_prompt">Out[6]:</div>
-<div class="output_text output_subarea output_execute_result">
-<pre><qiskit.circuit.instructionset.instructionset at 0x7fb352882a20></pre>
-</div>
-</div>
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<p>I will draw circuit again but this time in a different way</p>
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In [10]:</div>
-<div class="inner_cell">
-<div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">circuit</span><span class="o">.</span><span class="n">draw</span><span class="p">(</span><span class="n">output</span><span class="o">=</span><span class="s1">'mpl'</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="output_wrapper">
-<div class="output">
-<div class="output_area">
-<div class="prompt output_prompt">Out[10]:</div>
-<div class="output_png output_subarea output_execute_result">
-<img src="data:image/png;base64,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
-" />
-</div>
-</div>
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<p>And, that's it for now. Hope I will make some other notebooks soon.</p>
+<p><strong>Approach-1</strong></p>
 </div>
 </div>
 </div>
@@ -1323,9 +1155,7 @@ q0_1: |0>
     <footer class="footer position-absolute w-100">
         <div class="container text-center my-3">
           <ul class="soc-icons list-inline text-uppercase font-weight-bold text-monospace m-0">
-              <li class="list-inline-item"><a class="text-dark" href="https://www.facebook.com/quest4consc"><i class=" fab  fa-fw fa-facebook" aria-hidden="true"></i>Facebook</a></li>
               <li class="list-inline-item"><a class="text-dark" href="https://twitter.com/quest4consc"><i class=" fab  fa-fw fa-twitter" aria-hidden="true"></i>Twitter</a></li>
-              <li class="list-inline-item"><a class="text-dark" href="https://www.reddit.com/user/susumige"><i class=" fab  fa-fw fa-reddit" aria-hidden="true"></i>Reddit</a></li>
               <li class="list-inline-item"><a class="text-dark" href="https://github.com/susumige"><i class=" fab  fa-fw fa-github" aria-hidden="true"></i>Github</a></li>
               <li class="list-inline-item"><a class="text-dark" href="/pages/rss-feed.html"><i class=" fas  fa-fw fa-rss" aria-hidden="true"></i>Rss</a></li>
           </ul>
