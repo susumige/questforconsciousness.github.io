@@ -17,23 +17,23 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-    <meta name="description" content="Flip coin game on quantum computer."/>
+    <meta name="description" content="Initialize qubit to arbitrary state."/>
     <meta name="author" content="Ilija">
 
-    <title>Flip coin game on quantum computer -- Quest for Consciousness</title>
+    <title>Initialize qubit to arbitrary state -- Quest for Consciousness</title>
 
     <!-- OpenGraph protocol tags: http://ogp.me/ -->
     <meta property="og:site_name" content="Quest for Consciousness" />
     <meta property="og:type" content="article" />
-    <meta property="og:title" content="Flip coin game on quantum computer -- Quest for Consciousness" />
-    <meta property="og:url" content="http://questforconsciousness.org/notebooks/flip-coin-game-on-quantum-computer.html" />
-    <meta property="og:description" content="Flip coin game on quantum computer." />
-    <meta property="article:published_time" content="2019-04-03 00:00:00+02:00" />
+    <meta property="og:title" content="Initialize qubit to arbitrary state -- Quest for Consciousness" />
+    <meta property="og:url" content="http://questforconsciousness.org/drafts/initialize-qubit-to-arbitrary-state.html" />
+    <meta property="og:description" content="Initialize qubit to arbitrary state." />
+    <meta property="article:published_time" content="2020-12-16 00:00:00+01:00" />
     <!-- End of OpenGraph protocol tags -->
 
     <!-- Todo: Setup Twitter SEO meta data -->
 
-    <link rel="canonical" href="http://questforconsciousness.org/notebooks/flip-coin-game-on-quantum-computer.html"/>
+    <link rel="canonical" href="http://questforconsciousness.org/drafts/initialize-qubit-to-arbitrary-state.html"/>
 
     <!-- Bootstrap core CSS -->
     <link rel="stylesheet" href="/theme/css/bootstrap.min.css" />
@@ -62,13 +62,9 @@
       <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
       <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
-    <link href="/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="Quest for Consciousness Full Atom Feed" />         <link href="/feeds/notebooks.atom.xml" type="application/atom+xml" rel="alternate" title="Quest for Consciousness Categories Atom Feed" />     
+    <link href="/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="Quest for Consciousness Full Atom Feed" />         <link href="/feeds/qutips.atom.xml" type="application/atom+xml" rel="alternate" title="Quest for Consciousness Categories Atom Feed" />     
 
     <meta name="tags" content="qiskit" />
-    <meta name="tags" content="ibm" />
-    <meta name="tags" content="flip coin" />
-    <meta name="tags" content="game" />
-    <meta name="tags" content="quantum game" />
 
     <meta name="google-site-verification" content="7RLmddm4HbzdQLpwH2LH94_vBNmcaMGZSEhmmF5n0NM" />
 </head>
@@ -104,17 +100,10 @@
     <main class="container my-5 pb-3" role="main" style="min-height: 100%;">
 
 <h1>
-  Flip coin game on quantum computer
+  Initialize qubit to arbitrary state
 </h1>
-  <hr>
-  <p><i class="fa fa-calendar"></i> Posted on April 03, 2019</p>
-  <p><i class="fa fa-tags"></i> Tags:
-    <a href="/tag/qiskit.html" class="badge badge-primary">qiskit</a>,
-    <a href="/tag/ibm.html" class="badge badge-primary">ibm</a>,
-    <a href="/tag/flip-coin.html" class="badge badge-primary">flip coin</a>,
-    <a href="/tag/game.html" class="badge badge-primary">game</a>,
-    <a href="/tag/quantum-game.html" class="badge badge-primary">quantum game</a>
-  </p><div class='article_content'>
+<hr>
+<div class='article_content'>
   <style type="text/css">/*!
 *
 * IPython notebook
@@ -1091,7 +1080,7 @@ h6:hover .anchor-link {
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>Three approaches with implementing simple flip-coin game using the Hadamard gate.</p>
+<h2 id="Overview">Overview<a class="anchor-link" href="#Overview">¶</a></h2>
 </div>
 </div>
 </div>
@@ -1099,7 +1088,132 @@ h6:hover .anchor-link {
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p><strong>Approach-1</strong></p>
+<p>The Hadamard gate is a single-qubit operation. The Hadamard gate is the simplest method for generating a random bit in a qubit. Hadamard is quantum operator for quantum coin-flipping.</p>
+<p>H=1/sqrt(2)*([1,1], [1,-1])</p>
+<p>How it works:</p>
+<p>∣0⟩  ->  (∣0⟩+∣1⟩) / sqrt(2)</p>
+<p>∣1⟩  ->  (∣0⟩-∣1⟩) / sqrt(2)</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Imports">Imports<a class="anchor-link" href="#Imports">¶</a></h2>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [12]:</div>
+<div class="inner_cell">
+<div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">qiskit</span> <span class="k">import</span> <span class="n">QuantumCircuit</span><span class="p">,</span> <span class="n">Aer</span><span class="p">,</span> <span class="n">execute</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Build">Build<a class="anchor-link" href="#Build">¶</a></h2>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [13]:</div>
+<div class="inner_cell">
+<div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Create a circuit with one qubit, apply Hadamard gate, measure the result and draw the circuit.</span>
+<span class="n">qc</span> <span class="o">=</span> <span class="n">QuantumCircuit</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span> <span class="c1"># quantum circuit with one qubit</span>
+<span class="n">qc</span><span class="o">.</span><span class="n">h</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span> <span class="c1"># applying Hadamard gate</span>
+<span class="n">qc</span><span class="o">.</span><span class="n">measure_all</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Execute">Execute<a class="anchor-link" href="#Execute">¶</a></h2>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [14]:</div>
+<div class="inner_cell">
+<div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Every time you run this you will get a different random results</span>
+<span class="n">backend</span> <span class="o">=</span> <span class="n">Aer</span><span class="o">.</span><span class="n">get_backend</span><span class="p">(</span><span class="s1">'statevector_simulator'</span><span class="p">)</span>
+<span class="n">result</span> <span class="o">=</span> <span class="n">execute</span><span class="p">(</span><span class="n">qc</span><span class="p">,</span><span class="n">backend</span><span class="p">)</span><span class="o">.</span><span class="n">result</span><span class="p">()</span>
+<span class="n">out_state</span> <span class="o">=</span> <span class="n">result</span><span class="o">.</span><span class="n">get_statevector</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">out_state</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="output_wrapper">
+<div class="output">
+<div class="output_area">
+<div class="prompt"></div>
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>[0.+0.j 1.+0.j]
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Analyze">Analyze<a class="anchor-link" href="#Analyze">¶</a></h2>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [15]:</div>
+<div class="inner_cell">
+<div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">qc</span><span class="o">.</span><span class="n">draw</span><span class="p">(</span><span class="n">output</span><span class="o">=</span><span class="s1">'mpl'</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="output_wrapper">
+<div class="output">
+<div class="output_area">
+<div class="prompt output_prompt">Out[15]:</div>
+<div class="output_png output_subarea output_execute_result">
+<img src="data:image/png;base64,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
+" />
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Notes">Notes<a class="anchor-link" href="#Notes">¶</a></h2>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Qiskit version: ???</p>
 </div>
 </div>
 </div>
@@ -1133,23 +1247,7 @@ h6:hover .anchor-link {
 }
 </script>
 
-</div>
-<aside>
-      <div class="comments mt-5">
-        <h2>Comments</h2>
-        <div id="disqus_thread"></div>
-        <script type="text/javascript">
-          var disqus_identifier = "notebooks/flip-coin-game-on-quantum-computer.html";
-          (function () {
-            var dsq = document.createElement('script');
-            dsq.type = 'text/javascript';
-            dsq.async = true;
-            dsq.src = 'https://questforconsciousness.disqus.com/embed.js';
-            (document.getElementsByTagName('head')[0] ||
-            document.getElementsByTagName('body')[0]).appendChild(dsq);
-          })();
-        </script>
-      </div></aside>    </main>
+</div>    </main>
 
     <!-- start of footer section -->
     <footer class="footer position-absolute w-100">

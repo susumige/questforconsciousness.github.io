@@ -17,7 +17,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-    <meta name="description" content="The Hadamard gate"/>
+    <meta name="description" content="The Hadamard gate is the simplest method for generating a random result (bit) in a qubit. It can be used for creating quantum coin-flipping game."/>
     <meta name="author" content="Ilija">
 
     <title>The Hadamard gate -- Quest for Consciousness</title>
@@ -27,8 +27,8 @@
     <meta property="og:type" content="article" />
     <meta property="og:title" content="The Hadamard gate -- Quest for Consciousness" />
     <meta property="og:url" content="http://questforconsciousness.org/qutips/the-hadamard-gate.html" />
-    <meta property="og:description" content="The Hadamard gate" />
-    <meta property="article:published_time" content="2020-03-27 00:00:00+01:00" />
+    <meta property="og:description" content="The Hadamard gate is the simplest method for generating a random result (bit) in a qubit. It can be used for creating quantum coin-flipping game." />
+    <meta property="article:published_time" content="2020-11-27 00:00:00+01:00" />
     <!-- End of OpenGraph protocol tags -->
 
     <!-- Todo: Setup Twitter SEO meta data -->
@@ -1106,10 +1106,11 @@ h6:hover .anchor-link {
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In [12]:</div>
+<div class="prompt input_prompt">In [1]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">qiskit</span> <span class="k">import</span> <span class="n">QuantumCircuit</span><span class="p">,</span> <span class="n">Aer</span><span class="p">,</span> <span class="n">execute</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">qiskit</span>
+<span class="kn">from</span> <span class="nn">qiskit</span> <span class="k">import</span> <span class="n">QuantumCircuit</span><span class="p">,</span> <span class="n">Aer</span><span class="p">,</span> <span class="n">execute</span>
 </pre></div>
 </div>
 </div>
@@ -1125,13 +1126,13 @@ h6:hover .anchor-link {
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In [13]:</div>
+<div class="prompt input_prompt">In [2]:</div>
 <div class="inner_cell">
 <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Create a circuit with one qubit, apply Hadamard gate, measure the result and draw the circuit.</span>
 <span class="n">qc</span> <span class="o">=</span> <span class="n">QuantumCircuit</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span> <span class="c1"># quantum circuit with one qubit</span>
 <span class="n">qc</span><span class="o">.</span><span class="n">h</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span> <span class="c1"># applying Hadamard gate</span>
-<span class="n">qc</span><span class="o">.</span><span class="n">measure_all</span><span class="p">()</span>
+<span class="n">qc</span><span class="o">.</span><span class="n">measure_all</span><span class="p">()</span> <span class="c1"># measure all qubits at the same time, creates a new ClassicalRegister with a size equal to the number of qubits being measured</span>
 </pre></div>
 </div>
 </div>
@@ -1147,13 +1148,13 @@ h6:hover .anchor-link {
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In [14]:</div>
+<div class="prompt input_prompt">In [3]:</div>
 <div class="inner_cell">
 <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Every time you run this you will get a different random results</span>
-<span class="n">backend</span> <span class="o">=</span> <span class="n">Aer</span><span class="o">.</span><span class="n">get_backend</span><span class="p">(</span><span class="s1">'statevector_simulator'</span><span class="p">)</span>
-<span class="n">result</span> <span class="o">=</span> <span class="n">execute</span><span class="p">(</span><span class="n">qc</span><span class="p">,</span><span class="n">backend</span><span class="p">)</span><span class="o">.</span><span class="n">result</span><span class="p">()</span>
-<span class="n">out_state</span> <span class="o">=</span> <span class="n">result</span><span class="o">.</span><span class="n">get_statevector</span><span class="p">()</span>
+<span class="n">backend</span> <span class="o">=</span> <span class="n">Aer</span><span class="o">.</span><span class="n">get_backend</span><span class="p">(</span><span class="s1">'statevector_simulator'</span><span class="p">)</span> <span class="c1"># creating an AER provider which returns quantum state vector</span>
+<span class="n">result</span> <span class="o">=</span> <span class="n">execute</span><span class="p">(</span><span class="n">qc</span><span class="p">,</span> <span class="n">backend</span><span class="p">)</span><span class="o">.</span><span class="n">result</span><span class="p">()</span> <span class="c1"># executing experiment</span>
+<span class="n">out_state</span> <span class="o">=</span> <span class="n">result</span><span class="o">.</span><span class="n">get_statevector</span><span class="p">()</span> <span class="c1"># return the state vector at the end of the execution</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">out_state</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -1181,10 +1182,10 @@ h6:hover .anchor-link {
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In [15]:</div>
+<div class="prompt input_prompt">In [4]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">qc</span><span class="o">.</span><span class="n">draw</span><span class="p">(</span><span class="n">output</span><span class="o">=</span><span class="s1">'mpl'</span><span class="p">)</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">qc</span><span class="o">.</span><span class="n">draw</span><span class="p">(</span><span class="n">output</span><span class="o">=</span><span class="s1">'mpl'</span><span class="p">)</span> <span class="c1"># drawing a a matplotlib figure object for the circuit diagram</span>
 </pre></div>
 </div>
 </div>
@@ -1192,9 +1193,9 @@ h6:hover .anchor-link {
 <div class="output_wrapper">
 <div class="output">
 <div class="output_area">
-<div class="prompt output_prompt">Out[15]:</div>
+<div class="prompt output_prompt">Out[4]:</div>
 <div class="output_png output_subarea output_execute_result">
-<img src="data:image/png;base64,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
+<img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAO4AAAB7CAYAAABzRbzSAAAAOXRFWHRTb2Z0d2FyZQBNYXRwbG90bGliIHZlcnNpb24zLjMuMiwgaHR0cHM6Ly9tYXRwbG90bGliLm9yZy8vihELAAAACXBIWXMAAAsTAAALEwEAmpwYAAAMaUlEQVR4nO3dfVBU5QIG8OeAuCAgV0FAQERCUYG5K4EXuSNgknqBkStfjTM00xVyMLRwbNRG5CstGxrJawZzJ90szOErG22wsrg0fDhOCpaRlXQj2SYU95qlLSjs3j9UvCtfi+3u4V2f31+7Z99zzrOMj+fsOWf3SHq9Xg8iEoqN3AGIaOxYXCIBsbhEAmJxiQTE4hIJiMUlEhCLSyQgFpdIQCwukYBYXCIBsbhEAmJxiQTE4hIJiMUlEhCLSyQgFpdIQCwukYBYXCIBsbhEApogdwCyHt98882oY15//XWsX79+xDFz5841VSSrxS0uWdS+ffvkjmAVWFwiAbG4RAJiccmiqqur5Y5gFVhcIgGxuGRRKSkpckewCjwdJKP3TgM/XZVn3d5TgKQwedYth5ycHJw9e1aWdSuVSrz22msmXSaLK6OfrgLfX5Y7xcPh7Nmz+Oyzz+SOYTLcVSaLys7OljuCVWBxyaJGu2qKjMPikkVFRUXJHcEqsLhkUd3d3XJHsAosLpGAWFyyqPnz58sdwSqwuGRRNTU1ckcwG0mSMHnyZIusi+dxyaLy8vJQVFQkd4wRKRQKrFy5EpGRkViwYAGmTp2K/v5+/PDDDzhz5gxqa2vR2tpqMI8kSSgrK8PChQsRGxsLjUZj1ozc4pJFVVVVyR1hWPb29igqKoJarUZlZSVycnIQHR2NkJAQKJVKrFq1Cjt27EBLSwtOnjyJZcuWAbhX2rVr1yIwMNAiPwTALa5AqnfEwDc4Fgv/nmvUdDJeWFgYysvLERgYCABoaWlBTU0NTp8+ja6uLtjZ2WHu3LmIjIzE6tWrERERgY8++gj79++HJElYs2YNtFotEhIS0NTUZPa8LO4wjhw5gu3bt+PChQuYOXMmNm/ejMbGRtTX16Ojo0PueGRCS5YswbFjx+Do6Ii2tjZkZWWhsbFx0LgzZ87g0KFDeP7557FhwwYUFhYiIyMDAAZKW1dXZ5HMLO4QPvzwQyQnJyM2NhYvvfQSbty4gfz8fGi1Wtja2sodT2jj7XrhwMBAHD16FI6OjlCpVMjKysLNmzdHnEer1aK4uBhhYWFITU0FcPtaaEuVFmBxh5SXlwc/Pz/U1tZiwoTbf6LIyEjMnj0bXl5eMqcTW1tbG9zd3eWOAQCwsbGBSqWCk5MTKioqkJGRAb1eP+p8dz/TpqamoqenBzdv3sSiRYvw1FNP4a233jJ/cACS3pikD5EbN27A2dkZmzZtQnFxscFrMTEx6OjoGHVXWZIko9aVvO3f8JkXY3S26h0x6Pr+FGztFAbTb/VcR0RSwZg+46rP16Nm5xKjxxtj48aNo44pKSkZdVxJSYmpIo0oPT0d77zzDtRqNYKDg3Ht2rVR5/n/A1F3d4+nT5+O8vJyaDQa+Pj4oKen54EzGVtHbnHvc/XqVej1enh6eg56zdPTU/bPtwsTtw15cIrG7u43lfLz8x+4tHd3j5977jmEh4fjiSeewMGDB82aG2BxB5kyZQokSUJXV9eg14aaNhRj/9fce0K+7+NGR8egeodpd7aM+V3lkpISrF27dsQxu3fvNlWkATExMQafr/38/BAREYFffvkFhw8fHnX+kUoLAKWlpQgPD8fq1asHFTc6Ohr19fUmey8Az+MO4ujoiLCwMNTU1KCvr29g+o8//ojm5mYZk1mHwsJCuSMAuH36BwCampqg1WpHHDtaaQHgxIkTBss1NxZ3CEVFRejo6EBcXByOHTuGw4cPY9myZfDw8JA7mvDS0tLkjgAACAoKAgB88cUXI44zprQAoFarodFo4OrqapF/J9xVHsKKFStQXV2N7du3Izk5GTNnzsTWrVvR0NBg8l2esUjJHXrdw00fj+bNm4fz58/LHQMNDQ148cUX8emnn444Lj09fdTS3vXKK6/AwcHhDx2cMhaLO4ykpCQkJSUZTGtoaJApDZlaXV2dUeddDx06hEWLFqG6unrU8fefhTAnFpdoBDqdDs8884zcMQbhZ1yyqJiYGLkjWAVuccfAUlfFWLPS0lK5I1gFbnHJotatWyd3BKvA4pJFyXlU3pqwuEQCYnGJBMTikkWNh4svrAGLSxZVWVkpdwSrwNNBMvKe8vCtOz8/X5brlZVK5Zjn+c/FnwEA/r7TDR5bYt2jYXFl9DDdn1ZuD3J/2q2v/AsAsGvLWoPH4wF3lYkExOKSRb3xxhtyR7AKLC5Z1N3vwdIfw+KSRUVHR8sdwSqwuEQCYnGJBMTTQWQyxtzsKj8/3yI3xbJ23OKSRRUUFMgdwSqwuEQCYnGJBMTiEgmIxSUSEItLJCAWl0hALC6RmdTX1yMoKAgBAQHIzMxEf3+/yZbN4hKZgU6nQ2ZmJqqqqtDe3o5ff/0V5eXlJls+i0tkBp9//jm8vLwwf/58AEBGRgZqampMtnwWl8gM1Go1ZsyYMfDc19cXnZ2dJls+r1UmukOn0+Hw0TpcuXrNYPoeVc2Qj6P/8mco5wcMuSy9Xm+ekHdwi0t0h42NDRaHh6Cr+7/4+bJmYPr9j3++rMEEW1uEzPUfdlkzZsww2MJevHgRPj4+pstqsiURWQFfbw8siVCOOMbObgLSEmJgazN8fcLCwqBWq/H1118DAPbv3z/ofst/BItLdJ+lf30U3p5uw74evyQC06b+acRl2Nra4s0330RKSgoeeeQRODk54cknnzRZRklv7p1xIgFdvnIV/zz4Hvr6DM+9zpk1A/9IXQFJkmRKdhu3uERDcHebgr9F/8Vg2iR7BVLiomUvLcDiEg1r0aNBCJjpPfB81fLFmOw0ScZE94yb4hYUFECSJHz11VeIj4+Hk5MTpk+fjuLiYgDA8ePHERoaikmTJmHBggVobGw0mL+5uRnLly+Hi4sLHBwcsHjx4kFjTp8+jbS0NPj6+sLBwQEBAQHYsGEDrl0zPPzf3t6OlJQUeHp6QqFQwNvbGytXroRGowE9PGwkCSlx0bBXTMSCoIARjyJb2rg7j5uamorMzExs3LgRb7/9NjZv3gyNRoMPPvgAubm5cHZ2xrZt25CYmIiOjg44Ozvj448/RkJCAh577DGoVCooFArs27cPS5cuRWNjI8LDwwEAHR0dCAkJQXp6OlxcXNDe3o6XX34ZLS0taGpqGsgQHx+PyZMnY+/evfDw8EBXVxdOnDgBrVZr1Hu4e7sKsh6tbe1obWs3+3qMvcXJuDk4VVBQgMLCQpSWliIrKwsA0NvbCw8PD/z+++/47rvv4OfnBwCoq6vD0qVLUV1djeTkZMyZMwdubm5obGyEzZ1D9H19fQgODoa/vz9qa2uHXGdfXx9OnjyJqKgotLa2QqlU4sqVK5g2bRref/99JCYmPtB7YXHpQRlb3HG3xY2Lixt4rFAo4O/vj/7+/oHSAvd+TbCzsxPt7e24cOECcnJyoNPpoNPpBsbFxsZCpVINPL9+/Tp27dqFiooKdHZ2ore3d+C1b7/9FkqlEq6urvD398fWrVtx6dIlREVFjflXCcfLjaHIeo274k6dOtXg+cSJE2Fvbz9oGgD09PTg0qVLAIDs7GxkZ2cPuUytVgsHBwesWbMGx48fR0FBAUJDQ+Hs7IzOzk4kJSUN7AZLkoRPPvkERUVFyM3NRXd3N3x8fJCdnY0tW7YYdUSRW1x6UMJuccfK1dUVwO1d7fj4+CHHKBQK9PT04MiRI8jLy8OmTZsGXrv/wBQAzJo1CyqVCnq9Hm1tbThw4ABeeOEFuLm5ITMz0zxvhGgMhC9uYGAg/P39ce7cOeTn5w87rre3F319fbCzszOYfuDAgWHnkSQJwcHB2L17N8rKynDu3DmjMnFXmcxN+OJKkoSysjLEx8cjMTER6enpcHd3R3d3N1paWnDr1i0UFxfDxcUFkZGRePXVV+Hh4QEvLy9UVlbi1KlTBsv78ssv8eyzzyItLQ2zZ88GAFRVVUGr1WL58uVyvEWiQYQvLgA8/vjjaG5uxs6dO7Fu3Tr89ttvcHd3R2hoKJ5++umBce+++y7Wr1+PnJwc2NraIiEhARUVFQgLu3dreE9PT/j5+WHPnj1Qq9Wws7PDvHnzUFlZaXDgjEhO4+Z0EBEZb9xcOUVExmNxiQTE4hIJiMUlEhCLSyQgFpdIQCwukYBYXCIBsbhEAmJxiQTE4hIJiMUlEhCLSyQgFpdIQCwukYBYXCIBsbhEAmJxiQTE4hIJiMUlEhCLSyQgFpdIQCwukYBYXCIBsbhEAmJxiQTE4hIJiMUlEtD/AET+y/tyeFdfAAAAAElFTkSuQmCC
 " />
 </div>
 </div>
@@ -1209,11 +1210,24 @@ h6:hover .anchor-link {
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [5]:</div>
 <div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<p>Qiskit version: ???</p>
+<div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">qiskit</span><span class="o">.</span><span class="n">__version__</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="output_wrapper">
+<div class="output">
+<div class="output_area">
+<div class="prompt output_prompt">Out[5]:</div>
+<div class="output_text output_subarea output_execute_result">
+<pre>'0.16.1'</pre>
+</div>
+</div>
 </div>
 </div>
 </div>

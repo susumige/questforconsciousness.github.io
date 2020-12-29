@@ -17,23 +17,23 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-    <meta name="description" content="The Pauli X-gate is a simple negation operation on qubits. It corresponds to a classical NOT gate or logical NOT operator."/>
+    <meta name="description" content="How to save IBM Q API token on local machine for later use?"/>
     <meta name="author" content="Ilija">
 
-    <title>The Pauli X-gate -- Quest for Consciousness</title>
+    <title>Save IBM Q API token on a local machine -- Quest for Consciousness</title>
 
     <!-- OpenGraph protocol tags: http://ogp.me/ -->
     <meta property="og:site_name" content="Quest for Consciousness" />
     <meta property="og:type" content="article" />
-    <meta property="og:title" content="The Pauli X-gate -- Quest for Consciousness" />
-    <meta property="og:url" content="http://questforconsciousness.org/qutips/the-pauli-x-gate.html" />
-    <meta property="og:description" content="The Pauli X-gate is a simple negation operation on qubits. It corresponds to a classical NOT gate or logical NOT operator." />
-    <meta property="article:published_time" content="2020-10-26 00:00:00+01:00" />
+    <meta property="og:title" content="Save IBM Q API token on a local machine -- Quest for Consciousness" />
+    <meta property="og:url" content="http://questforconsciousness.org/qutips/save-ibm-q-api-token-on-a-local-machine.html" />
+    <meta property="og:description" content="How to save IBM Q API token on local machine for later use?" />
+    <meta property="article:published_time" content="2020-09-27 00:00:00+02:00" />
     <!-- End of OpenGraph protocol tags -->
 
     <!-- Todo: Setup Twitter SEO meta data -->
 
-    <link rel="canonical" href="http://questforconsciousness.org/qutips/the-pauli-x-gate.html"/>
+    <link rel="canonical" href="http://questforconsciousness.org/qutips/save-ibm-q-api-token-on-a-local-machine.html"/>
 
     <!-- Bootstrap core CSS -->
     <link rel="stylesheet" href="/theme/css/bootstrap.min.css" />
@@ -100,7 +100,7 @@
     <main class="container my-5 pb-3" role="main" style="min-height: 100%;">
 
 <h1>
-  The Pauli X-gate
+  Save IBM Q API token on a local machine
 </h1>
 <hr>
 <div class='article_content'>
@@ -1080,55 +1080,18 @@ h6:hover .anchor-link {
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="Overview">Overview<a class="anchor-link" href="#Overview">¶</a></h1>
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<p>The Pauli X-gate is a simple negation operation. It corresponds to a classical NOT gate.</p>
-<p>Here is how it works:</p>
-<p>|0> --> |1><br />
-|1> --> |0></p>
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="Imports">Imports<a class="anchor-link" href="#Imports">¶</a></h1>
+<p>To get you APi token login to <a href="https://quantum-computing.ibm.com/login">https://quantum-computing.ibm.com/login</a> and go to "My Account > Copy token".</p>
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In [6]:</div>
+<div class="prompt input_prompt">In [1]:</div>
 <div class="inner_cell">
 <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">qiskit</span>
-<span class="kn">from</span> <span class="nn">qiskit</span> <span class="k">import</span> <span class="n">QuantumCircuit</span><span class="p">,</span> <span class="n">Aer</span><span class="p">,</span> <span class="n">execute</span>
-<span class="kn">from</span> <span class="nn">qiskit.extensions</span> <span class="k">import</span> <span class="n">Initialize</span>
 </pre></div>
 </div>
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="Build">Build<a class="anchor-link" href="#Build">¶</a></h1>
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<p>Let's try first with |0> --> |1> example. By default qubit is initialized to |0></p>
 </div>
 </div>
 </div>
@@ -1137,33 +1100,20 @@ h6:hover .anchor-link {
 <div class="prompt input_prompt">In [2]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">qc</span> <span class="o">=</span> <span class="n">QuantumCircuit</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span> <span class="c1"># quantum circuit with one qubit</span>
-<span class="n">qc</span><span class="o">.</span><span class="n">x</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span> <span class="c1"># applying X-gate</span>
-<span class="n">backend</span> <span class="o">=</span> <span class="n">Aer</span><span class="o">.</span><span class="n">get_backend</span><span class="p">(</span><span class="s1">'statevector_simulator'</span><span class="p">)</span>
-<span class="n">result</span> <span class="o">=</span> <span class="n">execute</span><span class="p">(</span><span class="n">qc</span><span class="p">,</span><span class="n">backend</span><span class="p">)</span><span class="o">.</span><span class="n">result</span><span class="p">()</span>
-<span class="n">out_state</span> <span class="o">=</span> <span class="n">result</span><span class="o">.</span><span class="n">get_statevector</span><span class="p">()</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">out_state</span><span class="p">)</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">qiskit</span> <span class="k">import</span> <span class="n">IBMQ</span>
 </pre></div>
 </div>
 </div>
 </div>
-<div class="output_wrapper">
-<div class="output">
-<div class="output_area">
-<div class="prompt"></div>
-<div class="output_subarea output_stream output_stdout output_text">
-<pre>[0.+0.j 1.+0.j]
-</pre>
 </div>
-</div>
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [ ]:</div>
 <div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<p>Now, let's see what will happen if we apply X-gate on |1> qubit</p>
+<div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">IBMQ</span><span class="o">.</span><span class="n">save_account</span><span class="p">(</span><span class="s1">'YOUR_API_TOKEN'</span><span class="p">)</span>
+</pre></div>
+</div>
 </div>
 </div>
 </div>
@@ -1172,8 +1122,7 @@ h6:hover .anchor-link {
 <div class="prompt input_prompt">In [3]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">initialize_qubit</span> <span class="o">=</span> <span class="n">Initialize</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">])</span>
-<span class="n">qc</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">initialize_qubit</span><span class="p">,</span> <span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">IBMQ</span><span class="o">.</span><span class="n">load_account</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
@@ -1183,78 +1132,7 @@ h6:hover .anchor-link {
 <div class="output_area">
 <div class="prompt output_prompt">Out[3]:</div>
 <div class="output_text output_subarea output_execute_result">
-<pre><qiskit.circuit.instructionset.instructionset at 0x7f335ed07820></pre>
-</div>
-</div>
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In [4]:</div>
-<div class="inner_cell">
-<div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">qc</span><span class="o">.</span><span class="n">x</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
-<span class="n">backend</span> <span class="o">=</span> <span class="n">Aer</span><span class="o">.</span><span class="n">get_backend</span><span class="p">(</span><span class="s1">'statevector_simulator'</span><span class="p">)</span>
-<span class="n">result</span> <span class="o">=</span> <span class="n">execute</span><span class="p">(</span><span class="n">qc</span><span class="p">,</span><span class="n">backend</span><span class="p">)</span><span class="o">.</span><span class="n">result</span><span class="p">()</span>
-<span class="n">out_state</span> <span class="o">=</span> <span class="n">result</span><span class="o">.</span><span class="n">get_statevector</span><span class="p">()</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">out_state</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="output_wrapper">
-<div class="output">
-<div class="output_area">
-<div class="prompt"></div>
-<div class="output_subarea output_stream output_stdout output_text">
-<pre>[1.+0.j 0.+0.j]
-</pre>
-</div>
-</div>
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="Execute">Execute<a class="anchor-link" href="#Execute">¶</a></h1>
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="Analyze">Analyze<a class="anchor-link" href="#Analyze">¶</a></h1>
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="Notes">Notes<a class="anchor-link" href="#Notes">¶</a></h1>
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In [7]:</div>
-<div class="inner_cell">
-<div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">qiskit</span><span class="o">.</span><span class="n">__version__</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="output_wrapper">
-<div class="output">
-<div class="output_area">
-<div class="prompt output_prompt">Out[7]:</div>
-<div class="output_text output_subarea output_execute_result">
-<pre>'0.16.1'</pre>
+<pre><accountprovider for ibmq(hub="ibm-q" , group="open" , project="main" )></pre>
 </div>
 </div>
 </div>
